@@ -1,0 +1,39 @@
+.container
+  .row
+    .col-md-3
+      %p.lead 商品类别
+      .list-group
+        %a.list-group-item 保健品
+        %a.list-group-item 鞋帽
+        %a.list-group-item 其他
+    .col-md-9
+      .row.carousel-holder
+        .col-md-12
+          %div.carousel.slide{id:"carousel-example-generic", "data-ride" => "carousel"}
+            %ol.carousel-indicators
+              %li.active{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"0"}
+              %li{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"1"}
+              %li{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"2"}
+            .carousel-inner
+              .item.active
+                %img.slide-image{src:'http://placehold.it/800x300'}
+              .item
+                %img.slide-image{src:'http://placehold.it/800x300'}
+              .item
+                %img.slide-image{src:'http://placehold.it/800x300'}
+            %a.left.carousel-control{href:"#carousel-example-generic", "data-slide"=>"prev"}
+              %span.glyphicon.glyphicon-chevron-left
+            %a.right.carousel-control{href:"#carousel-example-generic", "data-slide"=>"next"}
+              %span.glyphicon.glyphicon-chevron-right
+      .row
+        - 6.times do
+          .col-sm-4.col-lg-4.col-md-4
+            .thumbnail
+              %img{src:"http://placehold.it/320x150"}
+              .caption
+                %h4.pull-right $24.99
+                %h4 
+                  %a{href:"#"}Production
+                %p See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>
+
+
