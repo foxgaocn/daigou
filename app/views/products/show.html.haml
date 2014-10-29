@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Sku:
+  = @product.sku
+%p
+  %b Name:
+  = @product.name
+%p
+  %b Desc:
+  = @product.desc
+%p
+  %b Category:
+  = @product.category.name
+%p
+  %b Price:
+  = @product.price
+%p
+  %b Stock:
+  = @product.stock
+%p
+  %b Active:
+  = @product.active
+%p
+  %b Weight:
+  = @product.weight
+
+- @product.pictures.each do |p|
+  = image_tag p.image.url(:thumb)
+
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Back', products_path
