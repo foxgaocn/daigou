@@ -1,37 +1,98 @@
-.container
-  .row
-    .col-md-3
-      %p.lead 商品类别
-      .list-group
-        - Category.all.each do |c|
-          %a.list-group-item #{c.name}
-    .col-md-9
-      .row.carousel-holder
-        .col-md-12
-          %div.carousel.slide{id:"carousel-example-generic", "data-ride" => "carousel"}
-            %ol.carousel-indicators
-              %li.active{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"0"}
-              %li{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"1"}
-              %li{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"2"}
-            .carousel-inner
-              .item.active
-                %img.slide-image{src:'http://placehold.it/800x300'}
-              .item
-                %img.slide-image{src:'http://placehold.it/800x300'}
-              .item
-                %img.slide-image{src:'http://placehold.it/800x300'}
-            %a.left.carousel-control{href:"#carousel-example-generic", "data-slide"=>"prev"}
-              %span.glyphicon.glyphicon-chevron-left
-            %a.right.carousel-control{href:"#carousel-example-generic", "data-slide"=>"next"}
-              %span.glyphicon.glyphicon-chevron-right
+!!!
+%html
+  %head
+    %title 澳代大本营
+    = stylesheet_link_tag 'application', media: :all
+    = javascript_include_tag 'application'
+    = csrf_meta_tag
+    %meta{'http-equiv' => 'X-UA-Compatible', content: 'IE=edge'}
+    %meta{'name' => "viewport", content: "width=device-width, initial-scale=1"}
+  %body
+    %nav.navbar.navbar-inverse.navbar-fixed-top{role:'navigation'}
+      .container
+        .navbar-header
+          %a.navbar-brand{href:"#"} 澳代大本营
+          %button.navbar-toggle{type:"button","data-toggle"=>"collapse", "data-target"=>"#navbar-main"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          
+        %div.collapse.navbar-collapse{id:'navbar-main'}
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a{href:"#"}关于我们
+            %li
+              %a{href:"#"}服务
+            %li
+              %a{href:"#"}联系我们
+            %li
+              - if user_signed_in?
+                =link_to  "退出登录", destroy_user_session_url
+              - else
+                =link_to  "登录", new_user_session_url
+
+    %header
+      .container
+        .intro-text
+          .intro-lead-in 代购也可以很轻松
+          .intro-heading 澳代大本营欢迎您
+          %a.btn.btn-xl{href:"/users/sign_up"} 加人我们
+
+    %section{id:"services"}
+      .container
+        .row
+          .col-lg-12.text-center
+            %h2.section-heading 轻轻松松做代购
+            %h3.section-subheading.text-muted 加入澳代大本营的六大好处
+        .row.text-center
+          .col-md-4
+            %span.fa-stack.fa-4x
+              %i.fa.fa-circle.fa-stack-2x.text-primary
+              %i.fa.fa-shopping-cart.fa-stack-1x.fa-inverse
+            %h4.service-heading 帮您买
+            %p.text-muted 受够了超市抢货的白眼? 不想再到拥挤的药店，不想再排长长的队伍? 没问题，我们有充足的货源满足你的家人或朋友对澳洲高质量产品的需求。
+            %a{href:'#'} 查看更多>>
+          .col-md-4
+            %span.fa-stack.fa-4x
+              %i.fa.fa-circle.fa-stack-2x.text-primary
+              %i.fa.fa-truck.fa-stack-1x.fa-inverse
+            %h4.service-heading 帮您寄
+            %p.text-muted 找不到靠谱的快递? 不想花半个上午就为了寄一点东西? 没问题，我们有靠谱的合作伙伴，打包，送货，我们能帮你搞定一切。
+            %a{href:'#'} 查看更多>>
+          .col-md-4
+            %span.fa-stack.fa-4x
+              %i.fa.fa-circle.fa-stack-2x.text-primary
+              %i.fa.fa-thumbs-up.fa-stack-1x.fa-inverse
+            %h4.service-heading 帮您推广
+            %p.text-muted 不想每天花太长的时间找图片，发微信？ 没问题，订阅我们的微信公众号，我们为您每天推送高质量推广信息。您要做的只是一键转发，轻轻松松搞定推广。
+            %a{href:'#'} 查看更多>>
+          .col-md-4
+            %span.fa-stack.fa-4x
+              %i.fa.fa-circle.fa-stack-2x.text-primary
+              %i.fa.fa-sitemap.fa-stack-1x.fa-inverse
+            %h4.service-heading 专属网站
+            %p.text-muted 只需注册成卖家，您将立刻拥有您的专属网站。您可自由定价我们所有的产品。您的小伙伴可以通过电脑，手机和平板访问您的网站，您无需花一分钱和一分钟维护你的网站。
+            %a{href:'#'} 查看更多>>
+          .col-md-4
+            %span.fa-stack.fa-4x
+              %i.fa.fa-circle.fa-stack-2x.text-primary
+              %i.fa.fa-dollar.fa-stack-1x.fa-inverse
+            %h4.service-heading 更多利润
+            %p.text-muted 您可销售大本营的任何产品，让您的家人和朋友有更多的选择，也让您自己赚取更多的利润。
+            %a{href:'#'} 查看更多>>
+          .col-md-4
+            %span.fa-stack.fa-4x
+              %i.fa.fa-circle.fa-stack-2x.text-primary
+              %i.fa.fa-smile-o.fa-stack-1x.fa-inverse
+            %h4.service-heading 更多快乐
+            %p.text-muted 无论您是为了赚取一定的利润做代购，或者您只是为了帮助朋友和家人，加人澳代大本营能让你节省大量的时间和精力。您将拥有更多时间陪伴家人，享受美丽的澳洲，您将变得更加happy
+            %a{href:'#'} 查看更多>>
+
+
+  .container
+    %hr
+    %footer
       .row
-        - Product.first(6).each do |p|
-          .col-sm-3.col-lg-3.col-md-3
-            .thumbnail
-              = image_tag p.pictures[0].image.url
-              .caption
-                %h4 $#{p.price}
-                %h4 
-                  %a{href:"#"} #{p.name}
-
-
+        .col-lg-12
+          %p Copyright &copy; daigou 2014

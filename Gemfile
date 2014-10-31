@@ -31,6 +31,14 @@ gem 'jbuilder', '~> 1.2'
 
 gem "paperclip", "~> 4.2"
 
+gem 'devise'
+
+gem "font-awesome-rails"
+
+gem 'rqrcode_png'
+gem 'dragonfly', '~> 1.0.7'
+
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -41,12 +49,13 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'pry-stack_explorer'
+  gem 'shoulda-matchers', require: false
 end
 
 group :test do  
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'faker'
+  gem 'ffaker', require: false
   gem 'launchy'
   gem 'poltergeist'
   gem 'selenium-webdriver'

@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title 我的澳洲代购铺
+    %title 澳代大本营
     = stylesheet_link_tag 'application', media: :all
     = javascript_include_tag 'application'
     = csrf_meta_tag
@@ -11,20 +11,24 @@
     %nav.navbar.navbar-inverse.navbar-fixed-top{role:'navigation'}
       .container
         .navbar-header
-          %button.navbar-toggle{type:"button","data-toggle"=>"collapse", "data-target"=>"bs-example-navbar-collapse-1"}
+          %a.navbar-brand{href:"#"} 澳代大本营
+          %button.navbar-toggle{type:"button","data-toggle"=>"collapse", "data-target"=>"#navbar-main"}
             %span.sr-only Toggle navigation
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.navbar-brand{href:"#"} 我的澳洲代购铺
-        %div.collapse.navbar-collapse{id:'bs-example-navbar-collapse-1'}
-          %ul.nav.navbar-nav
+          
+        %div.collapse.navbar-collapse{id:'navbar-main'}
+          %ul.nav.navbar-nav.navbar-right
             %li
               %a{href:"#"}关于我们
             %li
               %a{href:"#"}服务
             %li
               %a{href:"#"}联系我们
+            
+    %p.notice #{notice}
+    %p.alert  #{alert}
 
     = yield
   .container

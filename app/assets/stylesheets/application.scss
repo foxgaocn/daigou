@@ -1,3 +1,8 @@
 //= require_tree ../../../vendor/assets/stylesheets
 
 //=require_tree
+//=require font-awesome
+
+@import 'bootstrap_overrides';
+@import 'home';
+@import 'products'
