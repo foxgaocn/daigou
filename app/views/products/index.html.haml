@@ -1,33 +1,36 @@
-%h1 Listing products
+.container  
+  .row
+    .col-md-3
+      %p.lead 商品类别
+      .list-group
+        - Category.all.each do |c|
+          %a.list-group-item #{c.name}
+    .col-md-9
+      .row.carousel-holder
+        .col-md-12
+          %div.carousel.slide{id:"carousel-example-generic", "data-ride" => "carousel"}
+            %ol.carousel-indicators
+              %li.active{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"0"}
+              %li{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"1"}
+              %li{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"2"}
+            .carousel-inner
+              .item.active
+                %img.slide-image{src:'http://placehold.it/800x300'}
+              .item
+                %img.slide-image{src:'http://placehold.it/800x300'}
+              .item
+                %img.slide-image{src:'http://placehold.it/800x300'}
+            %a.left.carousel-control{href:"#carousel-example-generic", "data-slide"=>"prev"}
+              %span.glyphicon.glyphicon-chevron-left
+            %a.right.carousel-control{href:"#carousel-example-generic", "data-slide"=>"next"}
+              %span.glyphicon.glyphicon-chevron-right
+      .row.text-center
+        - Product.first(6).each do |p|
+          .col-sm-3.col-lg-3.col-md-3
+            .thumbnail
+              = image_tag p.pictures[0].image.url
+              .caption
+                %h4 $#{p.price}
+                %a{href:"#"} #{p.name}
 
-%table
-  %tr
-    %th Sku
-    %th Name
-    %th Desc
-    %th Category
-    %th Price
-    %th Stock
-    %th Active
-    %th Weight
-    %th
-    %th
-    %th
 
-  - @products.each do |product|
-    %tr
-      %td= product.sku
-      %td= product.name
-      %td= product.desc
-      %td= product.category
-      %td= product.price
-      %td= product.stock
-      %td= product.active
-      %td= product.weight
-      %td= link_to 'Show', product
-      %td= link_to 'Edit', edit_product_path(product)
-      %td= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Product', new_product_path

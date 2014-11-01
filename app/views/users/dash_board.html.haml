@@ -1,41 +1,36 @@
 .container
   .row
-    %p 欢迎
-    %p 设置我的店铺
-    %p 退出登陆
+    .panel.panel-primary
+      .panel-heading 
+        我的网店
+        %span.pull-right 编辑
+      .panel-body
+        %table.table
+          %tr
+            %td 网店网址:
+            %td= link_to "http://www.wangdian.com/#{current_user.store.name}"
+          %tr
+            %td 显示价格:
+            %td
+              = current_user.store.show_price ? '显示' : '不显示'
+          %tr
+            %td 自动定价:
+            %td 大本营价格 x 当天汇率 x 115%
+
+          %tr
+            %td 网店二维码:
+            %td= image_tag current_user.store.qr_code.url, size: "100"
+
   .row
-    .col-md-3
-      %p.lead 商品类别
-      .list-group
-        - Category.all.each do |c|
-          %a.list-group-item #{c.name}
-    .col-md-9
-      .row.carousel-holder
-        .col-md-12
-          %div.carousel.slide{id:"carousel-example-generic", "data-ride" => "carousel"}
-            %ol.carousel-indicators
-              %li.active{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"0"}
-              %li{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"1"}
-              %li{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"2"}
-            .carousel-inner
-              .item.active
-                %img.slide-image{src:'http://placehold.it/800x300'}
-              .item
-                %img.slide-image{src:'http://placehold.it/800x300'}
-              .item
-                %img.slide-image{src:'http://placehold.it/800x300'}
-            %a.left.carousel-control{href:"#carousel-example-generic", "data-slide"=>"prev"}
-              %span.glyphicon.glyphicon-chevron-left
-            %a.right.carousel-control{href:"#carousel-example-generic", "data-slide"=>"next"}
-              %span.glyphicon.glyphicon-chevron-right
-      .row
-        - Product.first(6).each do |p|
-          .col-sm-3.col-lg-3.col-md-3
-            .thumbnail
-              = image_tag p.pictures[0].image.url
-              .caption
-                %h4 $#{p.price}
-                %h4 
-                  %a{href:"#"} #{p.name}
-
-
+    .panel.panel-primary
+      .panel-heading 
+        网店商品
+      .panel-body
+        %table.table
+          %tr
+            %td 当前在售商品:
+            %td=link_to "查看所有商品", products_url 
+          %tr
+            %td 编辑我的售价
+            %td=link_to "编辑", 'products/price_edit'
+  

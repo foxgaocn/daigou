@@ -11,9 +11,9 @@ class User < ActiveRecord::Base
 
   def create_the_store
     name = generate_store_name
-    qr_code_img = RQRCode::QRCode.new('http://www.google.com/', :size => 4, :level => :h ).to_img
+    qr_code_img = RQRCode::QRCode.new('http://www.google.com/', :size => 16, :level => :h ).to_img
 
-    store = self.create_store(name:'abc')
+    store = self.create_store(name:generate_store_name)
     store.update_attribute :qr_code, qr_code_img.to_string
   end
 

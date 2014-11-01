@@ -1,19 +1,24 @@
 .container
-  %h2 注册成为卖家
-  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    = devise_error_messages!
-    %div
-      = f.label :email, "电子邮件"
-      %br/
-      = f.email_field :email, :autofocus => true
-    %div
-      = f.label :password, "密码"
-      %br/
-      = f.password_field :password
-    %div
-      = f.label :password_confirmation, "确认密码"
-      %br/
-      = f.password_field :password_confirmation
-    %div= f.submit "提交"
-  %br/
-  = render "devise/shared/links"
+  .row
+    .col-md-offset-3.col-md-6.col-md-offset-3
+      .panel.panel-primary
+        .panel-heading 注册成为卖家
+        .panel-body
+          = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+            = devise_error_messages!
+            %div
+              = f.label :email, "电子邮件"
+              %br/
+              = f.email_field :email, :autofocus => true
+            %div
+              = f.label :password, "密码"
+              %br/
+              = f.password_field :password
+            %div
+              = f.label :password_confirmation, "确认密码"
+              %br/
+              = f.password_field :password_confirmation
+            %div= f.submit "提交"
+          %br/
+        .panel-footer
+          = render "devise/shared/links"
