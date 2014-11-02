@@ -3,7 +3,28 @@ class Product < ActiveRecord::Base
 
   has_many :pictures, dependent: :destroy
 
+  has_many :store_products, dependent: :delete_all
+  has_many :store, through: :store_products
+
   accepts_nested_attributes_for :pictures, :reject_if => proc {|attributes|
     attributes.all? {|k,v| v.blank?}
   }, :allow_destroy => true
+
+  validate :price, presence: true, numericality: { only_integer: true }
+  validate :name, presence: true
+
+  after_create :add_to_store
+  after_destroy :remove_from_store
+
+  def dollar_price
+    price/100.00.round(2)
+  end
+
+  def add_to_store
+    Store.includes(:products).each { |s| s.products << self }
+  end
+
+  def remove_from_store
+    Store.includes(:products).each { |s| s.products.reject! {|p| p.id == id}}
+  end
 end

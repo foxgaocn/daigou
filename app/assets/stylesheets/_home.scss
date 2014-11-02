@@ -12,6 +12,16 @@ body {
   color: #fed136;
 }
 
+.navbar-inverse{
+  .navbar-nav{
+    li{
+      a{
+        color: #aaa;
+      }
+    }
+  }
+}
+
 p {
   font-size: 14px;
   line-height: 1.75;
@@ -25,7 +35,7 @@ a {
   &:hover, &:focus, &:active, &.active {
     outline: 0;
   }
-  color: #fed136;
+  color: #e2a100;
   &:hover, &:focus, &:active, &.active {
     color: #fec503;
   }

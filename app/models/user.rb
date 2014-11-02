@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
     store = self.create_store(name:generate_store_name)
     store.update_attribute :qr_code, qr_code_img.to_string
+
+    Product.all.each { |p| store.products << p } 
   end
 
   def generate_store_name

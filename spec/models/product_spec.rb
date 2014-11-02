@@ -1,5 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe Product, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Product do
+  describe 'after_create' do
+    it 'should add to store' do
+      2.times { FactoryGirl.create(:user)}
+      FactoryGirl.create(:product)
+
+      Store.all.each do |s|
+        expect(s.products.length).to eql 1
+      end
+
+      Product.last.destroy
+
+      Store.all.each do |s|
+        expect(s.products.length).to eql 0
+      end
+
+    end
+  end
+
 end

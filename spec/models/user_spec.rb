@@ -3,9 +3,10 @@ require 'rails_helper'
 describe User do
   describe 'after_create' do
     it 'should create store' do
+      2.times { FactoryGirl.create(:product)}
       user = FactoryGirl.create(:user)
-      puts user.store.inspect
       expect(user.store).not_to eql nil
+      expect(user.store.products.count).to eql 2
     end
   end
 
