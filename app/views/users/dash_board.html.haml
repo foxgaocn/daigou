@@ -8,14 +8,14 @@
         %table.table
           %tr
             %td 网店网址:
-            %td= link_to "http://www.wangdian.com/#{current_user.store.name}"
+            %td= link_to "#{ENV['dj_mall_url']}/#{current_user.store.name}","#{ENV['dj_mall_url']}/#{current_user.store.name}", target: "_blank"
           %tr
             %td 显示价格:
             %td
               = current_user.store.show_price ? '显示' : '不显示'
           %tr
             %td 自动定价:
-            %td 大本营价格 x 当天汇率 x 115%
+            %td 大本营价格 x 当天汇率 x #{100 + current_user.store.price_factor}%
 
           %tr
             %td 网店二维码:

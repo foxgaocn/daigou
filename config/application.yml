@@ -1,0 +1,8 @@
+defaults: &defaults
+  dj_mall_url: http://localhost:3001
+
+development:
+  <<: *defaults
+
+production:
+  dj_mall_url: http://17daigou.com.au
