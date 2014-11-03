@@ -37,7 +37,10 @@
         .intro-text
           .intro-lead-in 代购也可以很轻松
           .intro-heading 澳代大本营欢迎您
-          %a.btn.btn-xl{href:"/users/sign_up"} 加人我们
+          - if user_signed_in?
+            %a.btn.btn-xl{href:"/my"} 进入我的店铺
+          - else
+            %a.btn.btn-xl{href:"/users/sign_up"} 加人我们
 
     %section{id:"services"}
       .container
