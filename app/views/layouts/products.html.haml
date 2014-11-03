@@ -1,0 +1,13 @@
+= content_for :content do
+  .container  
+    .row
+      .col-md-3
+        %p.lead 商品类别
+        .list-group
+          %a.list-group-item{href: "/products"} 所有商品
+          - Category.all.each do |c|
+            %a.list-group-item{href: "/products?category_id=#{c.id}"} #{c.name}
+      .col-md-9
+        = yield
+= render template: "layouts/application"
+

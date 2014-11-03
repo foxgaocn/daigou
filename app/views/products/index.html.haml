@@ -1,36 +1,8 @@
-.container  
-  .row
-    .col-md-3
-      %p.lead 商品类别
-      .list-group
-        - Category.all.each do |c|
-          %a.list-group-item #{c.name}
-    .col-md-9
-      .row.carousel-holder
-        .col-md-12
-          %div.carousel.slide{id:"carousel-example-generic", "data-ride" => "carousel"}
-            %ol.carousel-indicators
-              %li.active{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"0"}
-              %li{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"1"}
-              %li{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"2"}
-            .carousel-inner
-              .item.active
-                %img.slide-image{src:'http://placehold.it/800x300'}
-              .item
-                %img.slide-image{src:'http://placehold.it/800x300'}
-              .item
-                %img.slide-image{src:'http://placehold.it/800x300'}
-            %a.left.carousel-control{href:"#carousel-example-generic", "data-slide"=>"prev"}
-              %span.glyphicon.glyphicon-chevron-left
-            %a.right.carousel-control{href:"#carousel-example-generic", "data-slide"=>"next"}
-              %span.glyphicon.glyphicon-chevron-right
-      .row.text-center
-        - Product.first(6).each do |p|
-          .col-sm-3.col-lg-3.col-md-3
-            .thumbnail
-              = image_tag p.pictures[0].image.url
-              .caption
-                %h4 $#{p.dollar_price}
-                %a{href:"#"} #{p.name}
-
-
+.row.text-center
+  - @products.each do |p|
+    .col-sm-3.col-lg-3.col-md-3
+      .thumbnail
+        = image_tag p.pictures[0].image.url(:thumb)
+        .caption
+          %h4 $#{p.dollar_price}
+          %a{href:"/products/#{p.id}"} #{p.name}

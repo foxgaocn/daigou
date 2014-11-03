@@ -35,7 +35,7 @@
     %p.notice #{notice}
     %p.alert  #{alert}
 
-    = yield
+    = content_for?(:content) ? yield(:content) : yield
   .container
     %hr
     %footer
