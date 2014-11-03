@@ -54,7 +54,6 @@ end
 
 group :test do  
   gem 'capybara'
-  gem 'database_cleaner'
   gem 'ffaker', require: false
   gem 'launchy'
   gem 'poltergeist'
