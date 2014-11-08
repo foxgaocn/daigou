@@ -10,11 +10,15 @@
     = f.label :sku
     = f.text_field :sku
   .field
-    = f.label :name
+    = f.label :name, "产品名称"
     = f.text_field :name
+
   .field
-    = f.label :desc
-    = f.text_area :desc
+    = f.label :desc, "产品描述"
+    #wysihtml5-toolbar{:style => "display: none;"}
+      %a{"data-wysihtml5-command" => "bold"} bold
+      %a{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h4"} header
+    = f.text_area :desc, id:"wysihtml5-textrea", size: "80x30"
   .field
     = f.label :category
     = f.collection_select :category_id, Category.order(:id), :id, :name
@@ -42,3 +46,9 @@
         = pf.file_field :image
   .actions
     = f.submit 'Save'
+
+:javascript
+  var editor = new wysihtml5.Editor("wysihtml5-textrea", {
+    toolbar:      "wysihtml5-toolbar",
+    parserRules:  wysihtml5ParserRules
+  });
