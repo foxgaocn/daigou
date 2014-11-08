@@ -1,0 +1,1 @@
+Rails.application.config.assets.precompile += ['html5editor/advanced.js', 'html5editor/wysihtml5.js']
