@@ -34,7 +34,7 @@
   .col-md-8
     %h2= @product.name
     %hr
-    %h4 人民币: #{@product.rmb_price}.00
+    %h4 $#{p.dollar_price}
     %hr
     %h4 产品描述
     %p= @product.desc.html_safe
