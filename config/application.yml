@@ -5,4 +5,4 @@ development:
   <<: *defaults
 
 production:
-  dj_mall_url: http://17daigou.com.au
+  dj_mall_url: http://69.28.95.66/
