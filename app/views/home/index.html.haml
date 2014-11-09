@@ -1,17 +1,18 @@
 !!!
 %html
   %head
-    %title 澳代大本营
+    %title 代购帮 - 澳洲代购大本营
     = stylesheet_link_tag 'application', media: :all
     = javascript_include_tag 'application'
     = csrf_meta_tag
+    = favicon_link_tag 'favicon.ico'
     %meta{'http-equiv' => 'X-UA-Compatible', content: 'IE=edge'}
     %meta{'name' => "viewport", content: "width=device-width, initial-scale=1"}
   %body
     %nav.navbar.navbar-inverse.navbar-fixed-top{role:'navigation'}
       .container
         .navbar-header
-          %a.navbar-brand{href:"#"} 澳代大本营
+          %a.navbar-brand{href:"/"} 代购帮
           %button.navbar-toggle{type:"button","data-toggle"=>"collapse", "data-target"=>"#navbar-main"}
             %span.sr-only Toggle navigation
             %span.icon-bar
@@ -21,22 +22,25 @@
         %div.collapse.navbar-collapse{id:'navbar-main'}
           %ul.nav.navbar-nav.navbar-right
             %li
-              %a{href:"#"}关于我们
-            %li
               =link_to "我们的商品", products_url
             %li
-              %a{href:"#"}联系我们
+              %a{href:"#"}关于我们     
             %li
-              - if user_signed_in?
+              %a{href:"#"}联系我们
+            - if user_signed_in?
+              %li
                 =link_to  "退出登录", destroy_user_session_url
-              - else
+            - else
+              %li
                 =link_to  "登录", new_user_session_url
+              %li
+                =link_to  "加入我们", new_user_registration_url
 
     %header
       .container
         .intro-text
           .intro-lead-in 代购也可以很轻松
-          .intro-heading 澳代大本营欢迎您
+          .intro-heading 欢迎加入代购帮
           - if user_signed_in?
             %a.btn.btn-xl{href:"/my"} 进入我的店铺
           - else
