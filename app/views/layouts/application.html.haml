@@ -36,13 +36,13 @@
               %li
                 =link_to  "加入我们", new_user_registration_url
 
-    %p.notice #{notice}
-    %p.alert  #{alert}
+    / %p.notice #{notice}
+    %p.alert{id:'global-alert'}  #{alert}
 
     = content_for?(:content) ? yield(:content) : yield
   .container
     %hr
     %footer
       .row
-        .col-lg-12
-          %p Copyright &copy; daigou 2014
+        .col-lg-12.text-muted
+          %p Copyright &copy; daigoubang 2014

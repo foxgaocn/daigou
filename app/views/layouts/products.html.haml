@@ -1,9 +1,9 @@
 = content_for :content do
   .container  
     .row
-      .col-md-3
-        %p.lead 商品类别
-        .list-group
+      .col-md-3 
+        .list-group.menu
+          .list-group-item.menu-title 商品类别
           %a.list-group-item{href: "/products"} 所有商品
           - Category.all.each do |c|
             %a.list-group-item{href: "/products?category_id=#{c.id}"} #{c.name}

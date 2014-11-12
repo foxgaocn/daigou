@@ -15,7 +15,7 @@
               = current_user.store.show_price ? '显示' : '不显示'
           %tr
             %td 自动定价:
-            %td 大本营价格 x 当天汇率 (#{Rails.cache.read('exchange_rate')}) x #{100 + current_user.store.price_factor}%
+            %td 代购帮价格 x 当天汇率 (#{Rails.cache.read('exchange_rate')}) x #{100 + current_user.store.price_factor}%
 
           %tr
             %td 网店二维码:
