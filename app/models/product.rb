@@ -16,6 +16,9 @@ class Product < ActiveRecord::Base
   after_create :add_to_store
   after_destroy :remove_from_store
 
+
+  self.per_page = 12
+
   def dollar_price
     price/100.00.round(2)
   end

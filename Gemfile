@@ -43,6 +43,8 @@ gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-rvm', github: "capistrano/rvm"
 
+gem 'will_paginate', '~> 3.0'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

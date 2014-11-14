@@ -7,7 +7,11 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     category_id = params[:category_id]
-    @products = category_id.present? ? Product.where(category_id: category_id) : Product.all
+    if category_id.present?
+      @products = Product.where(category_id: category_id).paginate(:page => params[:page])
+    else
+      @products =  Product.paginate(:page => params[:page])
+    end
   end
 
   # GET /products/1

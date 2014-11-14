@@ -13,3 +13,4 @@
         .caption
           %h4 $#{p.dollar_price}
           %a{href:"/products/#{p.id}"} #{p.name}
+  = will_paginate @products
