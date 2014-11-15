@@ -12,9 +12,9 @@ class User < ActiveRecord::Base
   def create_the_store
     name = generate_store_name
     store_url = "#{ENV['dj_mall_url']}/#{name}"
-    qr_code_img = RQRCode::QRCode.new(store_url, :size => 16, :level => :h ).to_img
+    qr_code_img = RQRCode::QRCode.new(store_url).to_img
 
-    store = self.create_store(name:generate_store_name)
+    store = self.create_store(name:name)
     store.update_attribute :qr_code, qr_code_img.to_string
 
     Product.all.each { |p| store.products << p } 
