@@ -1,0 +1,25 @@
+.container
+  .panel.panel-success
+    / Default panel contents
+    .panel-heading 购物车
+    
+    %table.table.table-striped.text-center
+      %th.text-center 产品名
+      %th.text-center  单价
+      %th.text-center  数量
+      - @cart.cart_items.each do |item|
+        %tr
+          %td.col-md-8= link_to item.product.name, product_path(item.product_id) 
+          %td.col-md-2= "#{item.product.dollar_price} 澳元"
+          %td.col-md-2
+            .input-group
+              %span.input-group-btn
+                %button.btn.btn-default{:type => "button"} -
+              %input.form-control.text-center{type:"text", value:item.quantity} 
+              %span.input-group-btn
+                %button.btn.btn-default{:type => "button"} +
+      %tr
+        %td.text-right{colspan:2} 总价
+        %td 100 
+    .panel-footer.text-right
+      .btn.btn-success 提交订单

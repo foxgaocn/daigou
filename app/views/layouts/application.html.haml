@@ -35,9 +35,15 @@
                 =link_to  "登录", new_user_session_url
               %li
                 =link_to  "加入我们", new_user_registration_url
+            %li 
+              %a{href:"/carts/show"} 
+                %i.fa.fa-shopping-cart
+                %span.badge 4
 
     / %p.notice #{notice}
     %p.alert{id:'global-alert'}  #{alert}
+
+    %i.icon-shopping-cart 
 
     = content_for?(:content) ? yield(:content) : yield
   .container

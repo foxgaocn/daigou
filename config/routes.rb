@@ -6,6 +6,12 @@ Daigou::Application.routes.draw do
   root 'home#index'
 
   get 'my', to: 'users#dash_board', as: :user_root 
+
+  resources :carts, only: [:show] do
+    post 'add_item', on: :collection
+    get 'item_quantity', on: :collection
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
