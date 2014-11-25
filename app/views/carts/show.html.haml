@@ -16,12 +16,14 @@
               %span.input-group-btn
                 %button.btn.btn-default.minus{:type => "button"} -
               %input.form-control.text-center.data-container{type:"number", min:0, value:item.quantity, 
-                'data-product' => "{\"product_id\": #{item.product_id}, \"quantity\":#{item.quantity}}"  } 
+                'data-product' => "{\"product_id\": #{item.product_id}, \"quantity\":#{item.quantity}, \"price\":#{item.product.dollar_price} } "  } 
               %span.input-group-btn
                 %button.btn.btn-default.plus{:type => "button"} +
       %tr
         %td.text-right{colspan:2} 总价
-        %td 100 
+        %td
+          %span{id:"total"}= @cart.total_price 
+          %span 澳元
     .panel-footer.text-right
       .btn.btn-success 去结算
 

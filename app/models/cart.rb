@@ -14,4 +14,8 @@ class Cart < ActiveRecord::Base
   def item_quantity
     cart_items.pluck(:quantity).reduce(:+) || 0
   end
+
+  def total_price
+    cart_items.sum(&:total_price).round(2)
+  end
 end
