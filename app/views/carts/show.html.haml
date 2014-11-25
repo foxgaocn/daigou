@@ -14,12 +14,16 @@
           %td.col-md-2
             .input-group
               %span.input-group-btn
-                %button.btn.btn-default{:type => "button"} -
-              %input.form-control.text-center{type:"text", value:item.quantity} 
+                %button.btn.btn-default.minus{:type => "button"} -
+              %input.form-control.text-center.data-container{type:"number", min:0, value:item.quantity, 
+                'data-product' => "{\"product_id\": #{item.product_id}, \"quantity\":#{item.quantity}}"  } 
               %span.input-group-btn
-                %button.btn.btn-default{:type => "button"} +
+                %button.btn.btn-default.plus{:type => "button"} +
       %tr
         %td.text-right{colspan:2} 总价
         %td 100 
     .panel-footer.text-right
-      .btn.btn-success 提交订单
+      .btn.btn-success 去结算
+
+:javascript
+  new CART
