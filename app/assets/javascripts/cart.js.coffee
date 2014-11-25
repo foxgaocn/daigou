@@ -1,7 +1,8 @@
 class @CART
-  constructor: ->
+  constructor: (@cart_id) ->
     $('.plus').click @add
     $('.minus').click @minus
+    $('.btn-success').click @submit
 
   add: (event)=>
     dataNode = $(event.target.parentElement.previousElementSibling)
@@ -21,3 +22,21 @@ class @CART
     dataProduct = JSON.parse(dataNode.attr("data-product"))
     dataProduct.quantity = value
     dataNode.attr("data-product", JSON.stringify(dataProduct))
+
+  submit: =>
+    items = []
+    $('.data-container').each (index, element) =>
+      $el = $(element)
+      item = JSON.parse($el.attr("data-product"))
+      items.push item
+    data = {"items": items}
+
+    $.ajax(
+        url: "/carts/" + @cart_id
+        type: 'PUT'
+        data: JSON.stringify(data),
+        dataType: 'json',
+        contentType: 'application/json',
+        success: (data)=>
+          window.location.href = '/'
+      )

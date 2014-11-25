@@ -5,8 +5,16 @@ class CartsController < ApplicationController
   def show
   end
 
+  def update
+    find_cart
+    update_params["items"].each do |item|
+      @cart.cart_items.find{|i| i.product_id == item["product_id"]}.update_attribute(:quantity, item["quantity"])
+    end
+    render nothing: true, status: 204
+  end
+
   def add_item
-    @cart.add_item(CartItem.new(item_params))
+    @cart.add_item(CartItem.new(add_params))
     respond_to do |format|
       format.html
       format.json
@@ -23,8 +31,16 @@ class CartsController < ApplicationController
   end
 
   private
-  def item_params
+  def update_params
+    params.permit(:items => [:product_id, :quantity])
+  end
+
+  def add_params
     params.require(:cart_item).permit(:product_id, :quantity)
+  end
+
+  def find_cart
+    @cart ||= Cart.find params[:id]
   end
 
   def load_cart

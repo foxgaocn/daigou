@@ -7,7 +7,7 @@ Daigou::Application.routes.draw do
 
   get 'my', to: 'users#dash_board', as: :user_root 
 
-  resources :carts, only: [:show] do
+  resources :carts, only: [:show, :update] do
     post 'add_item', on: :collection
     get 'item_quantity', on: :collection
   end
