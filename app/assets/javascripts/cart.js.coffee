@@ -2,6 +2,7 @@ class @CART
   constructor: (@cart_id) ->
     $('.plus').click @add
     $('.minus').click @minus
+    $('.fa-times').click @remove
     $('.btn-success').click @submit
     
 
@@ -17,6 +18,11 @@ class @CART
     oldValue = parseInt(dataNode.val())
     newValue = if oldValue < 1 then 0 else oldValue - 1
     @update_data_node(dataNode, newValue)
+    @calc_total_price()
+
+  remove: (event) =>
+    tr_node = $(event.target.parentElement.parentElement)
+    tr_node.remove()
     @calc_total_price()
 
   update_data_node: (dataNode, value) ->
@@ -37,6 +43,9 @@ class @CART
 
 
   submit: =>
+    if parseInt($('#total').text()) == 0
+      alert('对不起，你的购物车是空的')
+      return
     items = []
     $('.data-container').each (index, element) =>
       $el = $(element)
@@ -51,5 +60,5 @@ class @CART
         dataType: 'json',
         contentType: 'application/json',
         success: (data)=>
-          window.location.href = '/'
+          window.location.href = '/orders/new/?cart_id=' + @cart_id
       )

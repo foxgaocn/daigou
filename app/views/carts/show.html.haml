@@ -5,12 +5,15 @@
     
     %table.table.table-striped.text-center
       %th.text-center 产品名
+      %th.text-center  毛重量
       %th.text-center  单价
       %th.text-center  数量
+      %th.text-center  删除
       - @cart.cart_items.each do |item|
         %tr
-          %td.col-md-8= link_to item.product.name, product_path(item.product_id) 
-          %td.col-md-2= "#{item.product.dollar_price} 澳元"
+          %td.col-md-7= link_to item.product.name, product_path(item.product_id) 
+          %td.col-md-1= "#{item.product.weight} 克"
+          %td.col-md-1= "#{item.product.dollar_price} 澳元"
           %td.col-md-2
             .input-group
               %span.input-group-btn
@@ -19,8 +22,10 @@
                 'data-product' => "{\"product_id\": #{item.product_id}, \"quantity\":#{item.quantity}, \"price\":#{item.product.dollar_price} } "  } 
               %span.input-group-btn
                 %button.btn.btn-default.plus{:type => "button"} +
+          %td.col-md-1
+            %i.fa.fa-times
       %tr
-        %td.text-right{colspan:2} 总价
+        %td.text-right{colspan:4} 总价
         %td
           %span{id:"total"}= @cart.total_price 
           %span 澳元

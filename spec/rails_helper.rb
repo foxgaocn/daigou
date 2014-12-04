@@ -5,6 +5,8 @@ require 'factory_girl'
 require 'shoulda-matchers'
 require 'database_cleaner'
 
+::Rails.env = 'test'
+
 RSpec.configure do |config|
 
   config.before(:suite) do

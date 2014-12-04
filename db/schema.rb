@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141123053033) do
+ActiveRecord::Schema.define(version: 20141126031217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: true do |t|
+    t.string   "name"
+    t.string   "street"
+    t.string   "post_code"
+    t.string   "country"
+    t.string   "phone_number"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
 
   create_table "cart_items", force: true do |t|
     t.integer  "product_id"
@@ -46,6 +59,48 @@ ActiveRecord::Schema.define(version: 20141123053033) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "order_items", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  add_index "order_items", ["product_id"], name: "index_order_items_on_product_id", using: :btree
+
+  create_table "orders", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "package_items", force: true do |t|
+    t.integer  "package_id"
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "package_items", ["package_id"], name: "index_package_items_on_package_id", using: :btree
+  add_index "package_items", ["product_id"], name: "index_package_items_on_product_id", using: :btree
+
+  create_table "packages", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "address_id"
+    t.string   "track_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "packages", ["address_id"], name: "index_packages_on_address_id", using: :btree
+  add_index "packages", ["order_id"], name: "index_packages_on_order_id", using: :btree
 
   create_table "pictures", force: true do |t|
     t.integer  "product_id"

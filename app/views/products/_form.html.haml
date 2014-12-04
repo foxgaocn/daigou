@@ -24,7 +24,7 @@
     = f.collection_select :category_id, Category.order(:id), :id, :name
   .field
     = f.label :price
-    = f.text_field :price
+    = f.text_field :price, :value => @product.dollar_price
   .field
     = f.label :stock
     = f.number_field :stock

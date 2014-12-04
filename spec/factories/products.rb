@@ -1,13 +1,19 @@
+require 'ffaker'
+
 FactoryGirl.define do
   factory :product do
-    sku "MyString"
-    name "MyString"
-    desc "MyText"
+    sku {Faker::Name.first_name}
+    name {Faker::Name.first_name}
+    desc {Faker::Name.first_name}
     category nil
-    price 100
+    price Faker.numerify('####')
     stock 1
     active false
-    weight 1
+    weight Faker.numerify('###')
+
+    after(:create) do |prod|
+      FactoryGirl.create(:picture, product_id: prod.id)
+    end
   end
 
 end

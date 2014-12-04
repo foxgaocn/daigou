@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :store,  dependent: :destroy
+
+  has_many :orders
+  has_many :addresses
   
   after_create :create_the_store
 

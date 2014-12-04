@@ -57,11 +57,11 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry-stack_explorer'
   gem 'shoulda-matchers', require: false
+  gem 'ffaker', require: false
 end
 
 group :test do  
   gem 'capybara'
-  gem 'ffaker', require: false
   gem 'launchy'
   gem 'poltergeist'
   gem 'selenium-webdriver'
