@@ -12,8 +12,15 @@ Daigou::Application.routes.draw do
     get 'item_quantity', on: :collection
   end
 
-  resources :orders, only: [:new]
+  resources :orders, only: [:new] do
+    resources :packages, only: [] do
+      post :batch_update, on: :collection
+    end
+  end
 
+  resources :addresses, only: [:create, :index, :show]
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

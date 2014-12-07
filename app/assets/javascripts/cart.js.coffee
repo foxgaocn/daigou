@@ -4,6 +4,7 @@ class @CART
     $('.minus').click @minus
     $('.fa-times').click @remove
     $('.btn-success').click @submit
+    $('.back').click @go_products
     
 
   add: (event)=>
@@ -41,7 +42,8 @@ class @CART
 
     $('#total').text(total_price.toFixed(2))
 
-
+  go_products: ->
+    window.location.href = '/products'
   submit: =>
     if parseInt($('#total').text()) == 0
       alert('对不起，你的购物车是空的')

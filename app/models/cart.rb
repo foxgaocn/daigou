@@ -5,10 +5,11 @@ class Cart < ActiveRecord::Base
   def add_item(item)
     existing_item = cart_items.find {|ci| ci.product_id == item.product_id}
     if(existing_item)
-      existing_item.quantity += item.quantity
+      existing_item.update_attribute(:quantity, existing_item.quantity + item.quantity)
     else
       cart_items << item
     end
+
   end
 
   def item_quantity

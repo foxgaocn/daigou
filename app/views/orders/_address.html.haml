@@ -1,0 +1,30 @@
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Close
+        %h4#myModalLabel.modal-title 收件人信息
+      .modal-body
+        %form.form-horizontal{:role => "form"}
+          .form-group
+            %label.col-sm-2.control-label{:for => "name"} 姓名
+            .col-sm-10
+              %input#name.form-control
+          .form-group
+            %label.col-sm-2.control-label{:for => "street"} 地址
+            .col-sm-10
+              %input#street.form-control{placeholder: "请写明 省，市，街道及门牌号"}
+          .form-group
+            %label.col-sm-2.control-label{:for => "postcode"} 邮编
+            .col-sm-10
+              %input#postcode.form-control
+          .form-group
+            %label.col-sm-2.control-label{:for => "phone"} 电话
+            .col-sm-10
+              %input#phone.form-control{type: 'tel'}
+          
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} 取消
+        %button.btn.btn-info.save-address{:type => "button"} 保存

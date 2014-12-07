@@ -54,6 +54,8 @@ end
 group :development, :test do  
   gem 'factory_girl_rails'
   gem 'pry-rails'
+  gem 'pry-byebug'
+
   gem 'rspec-rails'
   gem 'pry-stack_explorer'
   gem 'shoulda-matchers', require: false

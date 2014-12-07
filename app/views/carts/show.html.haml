@@ -29,8 +29,12 @@
         %td
           %span{id:"total"}= @cart.total_price 
           %span 澳元
-    .panel-footer.text-right
-      .btn.btn-success 去结算
+    .panel-footer
+      .row
+        .col-md-6.text-left
+          .btn.btn-info.back < 继续购物
+        .col-md-6.text-right
+          .btn.btn-success 去结算 >
 
 :javascript
   new CART(#{@cart.id})

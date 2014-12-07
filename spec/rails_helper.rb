@@ -1,11 +1,11 @@
+ENV["RAILS_ENV"] ||= 'test'
+
 require File.expand_path("../../config/environment", __FILE__)
 
 require 'ffaker'
 require 'factory_girl'
 require 'shoulda-matchers'
 require 'database_cleaner'
-
-::Rails.env = 'test'
 
 RSpec.configure do |config|
 

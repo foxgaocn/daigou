@@ -40,13 +40,15 @@
     %p= @product.desc.html_safe
     %hr
     .row
-      .col-md-offset-8.col-md-4
-        .input-group{id:'add_cart'}
-          %select.form-control{id:'count'}
-            - (1..50).each do |i|
-              %option{:value => i} #{i}
+      .col-md-offset-5.col-md-4
+        .input-group
           %span.input-group-btn
-            .btn.btn-success.add 加入购物车
+            %button.btn.btn-default.minus{:type => "button"} -
+          %input.form-control.text-center{id: 'count', type:"number", min:0, value:1} 
+          %span.input-group-btn
+            %button.btn.btn-default.plus{:type => "button"} +
+      .col-md-3
+        .btn.btn-success.add 加入购物车
 
 :javascript
   new PRODUCT(#{@product.id})
