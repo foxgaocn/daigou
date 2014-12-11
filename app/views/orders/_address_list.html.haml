@@ -1,0 +1,11 @@
+%select.form-control.address-select{"data-package-id" => "#{package.id}"}
+  -if package.address_id.present?
+    - current_user.addresses.each do |address|
+      -if address.id == package.address_id
+        %option{:value => address.id, :selected => "selected"} #{address.street} #{address.name} 
+      -else
+        %option{:value => address.id} #{address.street} #{address.name} 
+  -else
+    %option{:disabled => "disabled", :selected => "selected", :value => ""} -- 从已有地址选择 --
+    - current_user.addresses.each do |address|
+      %option{:value => address.id} #{address.street} #{address.name} 

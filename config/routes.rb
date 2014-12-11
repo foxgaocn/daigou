@@ -12,7 +12,9 @@ Daigou::Application.routes.draw do
     get 'item_quantity', on: :collection
   end
 
-  resources :orders, only: [:new] do
+  resources :orders, only: [:new, :show] do
+    post :confirm, on: :member
+    get :confirmed, on: :member
     resources :packages, only: [] do
       post :batch_update, on: :collection
     end

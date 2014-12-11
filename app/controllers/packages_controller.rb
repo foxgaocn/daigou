@@ -5,7 +5,6 @@ class PackagesController < ApplicationController
   respond_to :json
 
   def batch_update
-    binding.pry
     @order = Order.find(params[:order_id])
     packages_params[:packages].each do |package|
       @order.packages.find(package[:package_id]).update_attribute(:address_id, package[:address_id])

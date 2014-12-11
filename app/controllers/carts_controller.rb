@@ -7,9 +7,7 @@ class CartsController < ApplicationController
 
   def update
     find_cart
-    update_params["items"].each do |item|
-      @cart.cart_items.find{|i| i.product_id == item["product_id"]}.update_attribute(:quantity, item["quantity"])
-    end
+    @cart.update(update_params["items"])
     render nothing: true, status: 204
   end
 

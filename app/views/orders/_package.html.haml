@@ -30,10 +30,7 @@
             %p= "#{item.product.name} x #{item.quantity}"
           .input-group.address
             %span.input-group-addon 送货地址
-            %select.form-control.address-select{"data-package-id" => "#{package.id}"}
-              %option{:disabled => "disabled", :selected => "selected", :value => ""} -- 从已有地址选择 --
-              - current_user.addresses.each do |address|
-                %option{:value => address.id} #{address.street} #{address.name} 
+            =render partial: 'address_list', locals: {package: package}
             %span.input-group-btn
               %button.btn.btn-info{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"} 新地址
 

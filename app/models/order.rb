@@ -1,4 +1,9 @@
 class Order < ActiveRecord::Base
+  CREATED = 0
+  CONFIRMED = 1
+  PAID = 2
+  DISPATCHED = 3
+
   belongs_to :user
   has_many :order_items
   has_many :packages
@@ -6,13 +11,17 @@ class Order < ActiveRecord::Base
   validates :user_id, presence: true
 
   def self.create_from_cart(cart)
-    order = Order.create(user_id: cart.user_id, status: 0)
+    order = Order.create(user_id: cart.user_id, status: CREATED)
     cart.cart_items.each do |cart_item|
       order.order_items.create(product_id: cart_item.product_id, quantity: cart_item.quantity)
     end
 
     create_packages(order)
     order
+  end
+
+  def confirm
+    update!(status: CONFIRMED)
   end
 
   def total_price
