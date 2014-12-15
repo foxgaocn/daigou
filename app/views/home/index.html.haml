@@ -22,12 +22,11 @@
         %div.collapse.navbar-collapse{id:'navbar-main'}
           %ul.nav.navbar-nav.navbar-right
             %li
-              =link_to "我们的商品", products_url
-            %li
-              %a{href:"#"}关于我们     
+              =link_to "我们的商品", products_url   
             %li
               %a{href:"#"}联系我们
             - if user_signed_in?
+              =link_to  "我的账户", user_root_path
               %li
                 =link_to  "退出登录", destroy_user_session_url
             - else

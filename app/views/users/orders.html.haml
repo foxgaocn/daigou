@@ -1,0 +1,25 @@
+.panel.panel-primary
+  .panel-heading 待付款订单
+  %table.table.table-striped
+    %tr
+      %th 订单日期
+      %th 订单总价
+      %th 订单详情
+    -@orders.where(status: Order::CONFIRMED).each do |o|
+      %tr
+        %th=o.created_at.in_time_zone('Sydney').to_date
+        %th=o.total_price
+        %th=link_to '查看', detail_order_path(o)
+
+.panel.panel-primary
+  .panel-heading 已付款订单
+  %table.table.table-striped
+    %tr
+      %th 订单日期
+      %th 订单总价
+      %th 订单详情
+    -@orders.where(status: Order::PAID).each do |o|
+      %tr
+        %th=o.created_at
+        %th=o.total_price
+        %th=link_to '查看', detail_order_path(o)

@@ -1,36 +1,34 @@
-.container
-  .row
-    .panel.panel-primary
-      .panel-heading 
-        我的网店
-        %span.pull-right 编辑
-      .panel-body
-        %table.table
-          %tr
-            %td 网店网址:
-            %td= link_to "#{ENV['dj_mall_url']}/#{current_user.store.name}","#{ENV['dj_mall_url']}/#{current_user.store.name}", target: "_blank"
-          %tr
-            %td 显示价格:
-            %td
-              = current_user.store.show_price ? '显示' : '不显示'
-          %tr
-            %td 自动定价:
-            %td 代购帮价格 x 当天汇率 (#{Rails.cache.read('exchange_rate')}) x #{100 + current_user.store.price_factor}%
+.row
+  .panel.panel-primary
+    .panel-heading 
+      我的网店
+      %span.pull-right 编辑
+    .panel-body
+      %table.table
+        %tr
+          %td 网店网址:
+          %td= link_to "#{ENV['dj_mall_url']}/#{current_user.store.name}","#{ENV['dj_mall_url']}/#{current_user.store.name}", target: "_blank"
+        %tr
+          %td 显示价格:
+          %td
+            = current_user.store.show_price ? '显示' : '不显示'
+        %tr
+          %td 自动定价:
+          %td 代购帮价格 x 当天汇率 (#{Rails.cache.read('exchange_rate')}) x #{100 + current_user.store.price_factor}%
 
-          %tr
-            %td 网店二维码:
-            %td= image_tag current_user.store.qr_code.url, size: "100"
+        %tr
+          %td 网店二维码:
+          %td= image_tag current_user.store.qr_code.url, size: "100"
 
-  .row
-    .panel.panel-primary
-      .panel-heading 
-        网店商品
-      .panel-body
-        %table.table
-          %tr
-            %td 当前在售商品:
-            %td=link_to "查看所有商品", products_url 
-          %tr
-            %td 编辑我的售价
-            %td=link_to "编辑", 'products/price_edit'
-  
+.row
+  .panel.panel-primary
+    .panel-heading 
+      网店商品
+    .panel-body
+      %table.table
+        %tr
+          %td 当前在售商品:
+          %td=link_to "查看所有商品", products_url 
+        %tr
+          %td 编辑我的售价
+          %td=link_to "编辑", 'products/price_edit'

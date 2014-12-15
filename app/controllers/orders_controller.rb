@@ -25,6 +25,11 @@ class OrdersController < ApplicationController
   def confirmed
   end
 
+  def detail
+    find_order
+    render :layout => "users"
+  end
+
   private
   def create_order
     cart = Cart.find(params[:cart_id])

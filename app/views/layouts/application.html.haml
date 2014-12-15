@@ -29,6 +29,8 @@
               %a{href:"#"}联系我们
             - if user_signed_in?
               %li
+                =link_to  "我的账户", user_root_path
+              %li
                 =link_to  "退出登录", destroy_user_session_url
             - else
               %li

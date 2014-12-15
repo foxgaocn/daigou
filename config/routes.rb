@@ -6,6 +6,8 @@ Daigou::Application.routes.draw do
   root 'home#index'
 
   get 'my', to: 'users#dash_board', as: :user_root 
+  get '/my/orders', to: 'users#orders'
+  get '/my/addresses', to: 'users#addresses'
 
   resources :carts, only: [:show, :update] do
     post 'add_item', on: :collection
@@ -15,6 +17,7 @@ Daigou::Application.routes.draw do
   resources :orders, only: [:new, :show] do
     post :confirm, on: :member
     get :confirmed, on: :member
+    get :detail, on: :member
     resources :packages, only: [] do
       post :batch_update, on: :collection
     end

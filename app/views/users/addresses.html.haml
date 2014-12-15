@@ -1,0 +1,14 @@
+.panel.panel-primary
+  .panel-heading 我的收件人
+  %table.table.table-striped
+    %tr
+      %th.col-md-2 姓名
+      %th.col-md-6 地址
+      %th.col-md-2 邮编
+      %th.col-md-2 手机号码
+    -@addresses.each do |a|
+      %tr
+        %td.col-md-2=a.name
+        %td.col-md-6=a.street
+        %td.col-md-2=a.post_code
+        %td.col-md-2=a.phone_number

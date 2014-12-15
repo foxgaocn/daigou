@@ -1,0 +1,12 @@
+= content_for :content do
+  .container  
+    .row
+      .col-md-2 
+        .list-group.menu
+          .list-group-item.menu-title 我的账户
+          %a.list-group-item{href: "/my"} 网店信息
+          %a.list-group-item{href:"/my/orders"} 我的订单
+          %a.list-group-item{href:"/my/addresses"} 收件人地址
+      .col-md-10
+        = yield
+= render template: "layouts/application"
