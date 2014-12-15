@@ -20,7 +20,7 @@ class Product < ActiveRecord::Base
   self.per_page = 12
 
   def dollar_price
-    price/100.00.round(2)
+    price.nil? ? 0: price/100.00.round(2)
   end
 
   def add_to_store

@@ -35,4 +35,12 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     session[:previous_url] || root_path
   end
+
+  def ensure_admin!
+    if current_user.nil?
+      redirect_to new_user_session_path 
+    elsif !current_user.admin?
+      redirect_to destroy_user_session_path
+    end
+  end
 end
