@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 
   def new
     create_order
-    render 'show'
+    redirect_to action: :show, id: @order.id
   end
 
   def show
@@ -37,6 +37,6 @@ class OrdersController < ApplicationController
   end
 
   def find_order
-    @order = current_user.orders.find(params[:id])
+    @order ||= current_user.orders.find(params[:id])
   end
 end
