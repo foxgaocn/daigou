@@ -49,6 +49,9 @@
             %button.btn.btn-default.plus{:type => "button"} +
       .col-md-3
         .btn.btn-success.add 加入购物车
+    .row
+      .col-md-offset-5.col-md-7
+        .alert.alert-info.text-center.info{style: 'display:none'} 购物车更新成功
 
 :javascript
   new PRODUCT(#{@product.id})
