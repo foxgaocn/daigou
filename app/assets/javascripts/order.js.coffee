@@ -1,6 +1,11 @@
 class @ORDER
   constructor: (@order_id) ->
     $('.save-address').click @add_address
+    $('.new-address').click @new_address
+
+  new_address: (event) =>
+    @target_id = $(event.target).data('id').toString()
+
 
   add_address: (event)=>
     name = $('#name').val().trim()
@@ -22,16 +27,18 @@ class @ORDER
 
 
   update_address_list: (address) =>
-    anchor = $('.address-select option:first-child')[0]
-    newNode = $("<option value='#{address.id}' selected='selected'> #{address.name}  #{address.street}  #{address.phone_number} </option>")
-    newNode.insertAfter(anchor)
+    selectElements = $('.address-select')
+    for selectElement in selectElements
+      newNode = $("<option value='#{address.id}'> #{address.name}  #{address.street}  #{address.phone_number} </option>")
+      newNode.insertAfter(selectElement.firstElementChild) 
+      if selectElement.getAttribute('data-package-id') == @target_id
+        newNode.attr('selected', 'selected')
     $('#myModal').modal('hide')
 
   go_previous: (index) =>
     @set_button(index)
 
   go_next: (index) =>
-    @set_button(index)
     switch index
       when 1 then return @save_address()
       when 2 then return @pay()
@@ -74,13 +81,27 @@ class @ORDER
       url: "/orders/" + @order_id + "/confirm"
       type: 'POST'
       contentType: 'application/json',
-      success: (data) ->
+      success: (data) =>
+        @empty_cart()
         window.location.href = "/orders/" + @order_id + "/confirmed"
     ).fail( (jqXHR, textStatus, errorThrown) =>
         alert('对不起，出错了，请与我们联系')
         window.location.href = "/"
       )
     return true
+
+
+  empty_cart: ->
+    $.ajax(
+      url: "/carts/clear"
+      type: 'POST'
+      contentType: 'application/json',
+      success: (data) ->
+        $('.badge').text(0)
+    ).fail( (jqXHR, textStatus, errorThrown) =>
+        alert('对不起，出错了，请与我们联系')
+        window.location.href = "/"
+      )
 
   wrong_index: =>
     return false

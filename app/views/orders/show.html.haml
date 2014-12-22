@@ -30,7 +30,9 @@
                             return false;
                   },
       "onNext": function(tab, navigation, index){
-                return order.go_next(index)
+                result = order.go_next(index)
+                if (result) order.set_button(index)
+                return result
               },
       "onPrevious": function(tab, navigation, index){
                 return order.go_previous(index)

@@ -32,7 +32,7 @@
             %span.input-group-addon 送货地址
             =render partial: 'address_list', locals: {package: package}
             %span.input-group-btn
-              %button.btn.btn-info{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"} 新地址
+              %button.btn.btn-info.new-address{"data-target" => "#myModal", "data-toggle" => "modal", "data-id" => package.id, :type => "button"} 新地址
 
 
 
