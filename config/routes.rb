@@ -12,6 +12,7 @@ Daigou::Application.routes.draw do
   resources :carts, only: [:show, :update] do
     post 'add_item', on: :collection
     get 'item_quantity', on: :collection
+    post 'clear', on: :collection
   end
 
   resources :orders, only: [:new, :show] do

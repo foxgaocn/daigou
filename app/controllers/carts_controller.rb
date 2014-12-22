@@ -19,6 +19,13 @@ class CartsController < ApplicationController
     end
   end
 
+  def clear
+    cart = Cart.find_by_user_id(current_user.try(:id))
+    cart.try(:destroy)
+    session[:cart_id] = nil
+    render nothing:true
+  end
+
   def item_quantity
     if (session[:cart_id].present? || user_signed_in?)
       load_cart

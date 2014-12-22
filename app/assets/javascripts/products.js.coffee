@@ -15,8 +15,9 @@ class @PRODUCT
     
     $.post("/carts/add_item.json",
           { "cart_item" : { "product_id": @product_id, "quantity": quantity} },
-          (data) => @set_badge(data)
-           
+          (data) => 
+            @set_badge(data)
+            $('.info').fadeIn('fast')
       ).fail( (jqXHR, textStatus, errorThrown) =>
         alert('whoops, something is wrong')
       )
