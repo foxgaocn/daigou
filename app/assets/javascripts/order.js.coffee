@@ -70,7 +70,7 @@ class @ORDER
       dataType: 'json',
       contentType: 'application/json'
     ).fail( (jqXHR, textStatus, errorThrown) =>
-        alert('对不起，出错了，请与我们联系')
+        alert('对不起，保存地址出错了，请与我们联系')
         window.location.href = "/"
       )
 
@@ -85,7 +85,7 @@ class @ORDER
         @empty_cart()
         window.location.href = "/orders/" + @order_id + "/confirmed"
     ).fail( (jqXHR, textStatus, errorThrown) =>
-        alert('对不起，出错了，请与我们联系')
+        alert('对不起，提交订单出错了，请与我们联系')
         window.location.href = "/"
       )
     return true
@@ -99,7 +99,7 @@ class @ORDER
       success: (data) ->
         $('.badge').text(0)
     ).fail( (jqXHR, textStatus, errorThrown) =>
-        alert('对不起，出错了，请与我们联系')
+        alert('对不起，清空购物车出错了，请与我们联系')
         window.location.href = "/"
       )
 
