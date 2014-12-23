@@ -33,5 +33,6 @@ module Daigou
     config.i18n.default_locale = :zh
 
     config.i18n.fallbacks = [:en]
+    I18n.config.enforce_available_locales = true
   end
 end
