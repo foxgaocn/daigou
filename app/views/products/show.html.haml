@@ -35,6 +35,7 @@
     %h2= @product.name
     %hr
     %h4 $#{@product.dollar_price}
+    %p 重量: #{@product.weight}g
     %hr
     %h4 产品描述
     %p= @product.desc.html_safe
