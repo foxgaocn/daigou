@@ -11,6 +11,7 @@ class Product < ActiveRecord::Base
   }, :allow_destroy => true
 
   validate :price, presence: true, numericality: { only_integer: true }
+  validate :weight, presence: true, numericality: { only_integer: true }
   validate :name, presence: true
 
   after_create :add_to_store
