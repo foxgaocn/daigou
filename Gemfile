@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.2.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -44,6 +44,7 @@ gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-rvm', github: "capistrano/rvm"
 
 gem 'will_paginate', '~> 3.0'
+gem 'httparty'
 
 
 group :doc do
@@ -55,6 +56,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem "better_errors"
 
   gem 'rspec-rails'
   gem 'pry-stack_explorer'

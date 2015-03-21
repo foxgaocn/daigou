@@ -10,9 +10,9 @@ class Product < ActiveRecord::Base
     attributes.all? {|k,v| v.blank?}
   }, :allow_destroy => true
 
-  validate :price, presence: true, numericality: { only_integer: true }
-  validate :weight, presence: true, numericality: { only_integer: true }
-  validate :name, presence: true
+  validates :price, presence: true, numericality: { only_integer: true }
+  validates :weight, presence: true, numericality: { only_integer: true }
+  validates :name, presence: true
 
   after_create :add_to_store
   after_destroy :remove_from_store

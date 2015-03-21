@@ -25,11 +25,11 @@ class Order < ActiveRecord::Base
   end
 
   def total_price
-    order_items.sum(&:total_price).round(2)
+    order_items.inject(0){|sum, i| sum + i.total_price}.round(2)
   end
 
   def total_deliver_cost
-    packages.sum(&:deliver_cost)
+    packages.inject(0){|sum, i | sum + i.deliver_cost}
   end
 
   #price + total_deliver_cost

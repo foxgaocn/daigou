@@ -31,6 +31,6 @@ class Cart < ActiveRecord::Base
   end
 
   def total_price
-    cart_items.sum(&:total_price).round(2)
+    cart_items.reduce(0){|sum, i| sum + i.total_price}.round(2)
   end
 end
