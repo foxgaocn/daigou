@@ -15,3 +15,8 @@
 /log/*.log
 /tmp
 public/system
+bin/bundler
+bin/html2haml
+bin/httparty
+bin/ruby_parse
+bin/ruby_parse_extract_error
