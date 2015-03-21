@@ -1,0 +1,21 @@
+%h2 编辑商品
+
+=form_tag my_update_products_path, :method => :put do
+  %table.table-striped.table-bordered
+    %tr
+      %th 产品名
+      %th 代购帮价格(澳元)
+      %th 汇率设定
+      %th 利润率
+      %th 自动定价(人民币)
+      %th 我的定价(人民币)
+    -@products.each do |store_product|
+      =fields_for "products[]", store_product do |f|
+        %tr
+          %td=store_product.product.name
+          %td=store_product.product.dollar_price
+          %td=store_product.rate
+          %td=store_product.store.price_factor
+          %td=store_product.auto_price_in_yuan
+          %td=f.text_field :custom_price
+  =submit_tag '确定'

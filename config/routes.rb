@@ -8,6 +8,8 @@ Daigou::Application.routes.draw do
   get 'my', to: 'users#dash_board', as: :user_root 
   get '/my/orders', to: 'users#orders'
   get '/my/addresses', to: 'users#addresses'
+  get '/my/products', to: 'users#products'
+  put 'my/update_products', to: 'users#update_products'
 
   resources :carts, only: [:show, :update] do
     post 'add_item', on: :collection

@@ -27,8 +27,5 @@
     .panel-body
       %table.table
         %tr
-          %td 当前在售商品:
-          %td=link_to "查看所有商品", products_url 
-        %tr
           %td 编辑我的售价
-          %td=link_to "编辑", 'products/price_edit'
+          %td=link_to "编辑商品", my_products_path

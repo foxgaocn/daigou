@@ -1,0 +1,1 @@
+0 14 * * * bash -cl 'cd ~/daigou/current && RAILS_ENV=production bundle exec rake create_rate'
