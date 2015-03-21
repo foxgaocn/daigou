@@ -3,7 +3,9 @@
   %head
     %title 代购帮 - 澳洲代购大本营
     = stylesheet_link_tag 'application', media: :all
+    = stylesheet_link_tag 'jquery.bxslider.css', media: :all
     = javascript_include_tag 'application'
+    = javascript_include_tag 'jquery.bxslider.min'
     = csrf_meta_tag
     = favicon_link_tag 'favicon.ico'
     %meta{'http-equiv' => 'X-UA-Compatible', content: 'IE=edge'}
@@ -40,65 +42,60 @@
                 %i.fa.fa-shopping-cart
                 %span.badge 0
 
-    %header
-      .container
-        .intro-text
-          .intro-lead-in 代购也可以很轻松
-          .intro-heading 欢迎加入代购帮
-          - if user_signed_in?
-            %a.btn.btn-xl{href:"/my"} 进入我的店铺
-          - else
-            %a.btn.btn-xl{href:"/users/sign_up"} 加人我们
-
     %section{id:"services"}
       .container
-        .row
-          .col-lg-12.text-center
-            %h2.section-heading 轻轻松松做代购
-            %h3.section-subheading.text-muted 加入代购帮的六大好处
-        .row.text-center
-          .col-md-4
-            %span.fa-stack.fa-4x
-              %i.fa.fa-circle.fa-stack-2x.text-primary
-              %i.fa.fa-shopping-cart.fa-stack-1x.fa-inverse
-            %h4.service-heading 帮您买
+        %ul.bxslider
+          %li.text-center
+            %h2 加入代购帮,轻松做代购
+            - if user_signed_in?
+              %a.btn.btn-xl{href:"/my"} 进入我的店铺
+            - else
+              %a.btn.btn-xl{href:"/users/sign_up"} 加人我们
+           
+            %h3
+              %i.fa.fa-shopping-cart.fa-stack-1x 帮您买
+            %br
+            %br
             %p.text-muted 受够了超市抢货的白眼? 不想再到拥挤的药店，不想再排长长的队伍? 没问题，我们有充足的货源满足你的家人或朋友对澳洲高质量产品的需求。
-            %a{href:'#'} 查看更多>>
-          .col-md-4
-            %span.fa-stack.fa-4x
-              %i.fa.fa-circle.fa-stack-2x.text-primary
-              %i.fa.fa-truck.fa-stack-1x.fa-inverse
-            %h4.service-heading 帮您寄
+          %li.text-center
+            %h2 加入代购帮,轻松做代购
+            - if user_signed_in?
+              %a.btn.btn-xl{href:"/my"} 进入我的店铺
+            - else
+              %a.btn.btn-xl{href:"/users/sign_up"} 加人我们
+           
+            %h3
+              %i.fa.fa-truck.fa-stack-1x 帮您寄
+            %br
+            %br
             %p.text-muted 找不到靠谱的快递? 不想花半个上午就为了寄一点东西? 没问题，我们有靠谱的合作伙伴，打包，送货，我们能帮你搞定一切。
-            %a{href:'#'} 查看更多>>
-          .col-md-4
-            %span.fa-stack.fa-4x
-              %i.fa.fa-circle.fa-stack-2x.text-primary
-              %i.fa.fa-thumbs-up.fa-stack-1x.fa-inverse
-            %h4.service-heading 帮您推广
-            %p.text-muted 不想每天花太长的时间找图片，发微信？ 没问题，订阅我们的微信公众号，我们为您每天推送高质量推广信息。您要做的只是一键转发，轻轻松松搞定推广。
-            %a{href:'#'} 查看更多>>
-          .col-md-4
-            %span.fa-stack.fa-4x
-              %i.fa.fa-circle.fa-stack-2x.text-primary
-              %i.fa.fa-sitemap.fa-stack-1x.fa-inverse
-            %h4.service-heading 专属网站
+          
+          %li.text-center
+            %h2 加入代购帮,轻松做代购
+            - if user_signed_in?
+              %a.btn.btn-xl{href:"/my"} 进入我的店铺
+            - else
+              %a.btn.btn-xl{href:"/users/sign_up"} 加人我们
+           
+            %h3
+              %i.fa.fa-thumbs-up.fa-stack-1x 帮您推广
+            %br
+            %br
+            %p.text-muted 找不到靠谱的快递? 不想花半个上午就为了寄一点东西? 没问题，我们有靠谱的合作伙伴，打包，送货，我们能帮你搞定一切。
+          
+          %li.text-center
+            %h2 加入代购帮,轻松做代购
+            - if user_signed_in?
+              %a.btn.btn-xl{href:"/my"} 进入我的店铺
+            - else
+              %a.btn.btn-xl{href:"/users/sign_up"} 加人我们
+           
+            %h3
+              %i.fa.fa-sitemap.fa-stack-1x 专属网站
+            %br
+            %br
             %p.text-muted 只需注册成卖家，您将立刻拥有您的专属网站。您可自由定价我们所有的产品。您的小伙伴可以通过电脑，手机和平板访问您的网站，您无需花一分钱和一分钟维护你的网站。
-            %a{href:'#'} 查看更多>>
-          .col-md-4
-            %span.fa-stack.fa-4x
-              %i.fa.fa-circle.fa-stack-2x.text-primary
-              %i.fa.fa-dollar.fa-stack-1x.fa-inverse
-            %h4.service-heading 更多利润
-            %p.text-muted 您可销售代购帮的任何产品，让您的家人和朋友有更多的选择，也让您自己赚取更多的利润。
-            %a{href:'#'} 查看更多>>
-          .col-md-4
-            %span.fa-stack.fa-4x
-              %i.fa.fa-circle.fa-stack-2x.text-primary
-              %i.fa.fa-smile-o.fa-stack-1x.fa-inverse
-            %h4.service-heading 更多快乐
-            %p.text-muted 无论您是为了赚取一定的利润做代购，或者您只是为了帮助朋友和家人，加人代购帮能让你节省大量的时间和精力。您将拥有更多时间陪伴家人，享受美丽的澳洲，您将变得更加happy
-            %a{href:'#'} 查看更多>>
+            %a{href:'#'} 精确期待>>
 
 
   .container
@@ -107,3 +104,6 @@
       .row
         .col-lg-12.text-muted
           %p Copyright &copy; daigoubang 2014
+
+:javascript
+    $(document).ready(function(){ $('.bxslider').bxSlider(); });
