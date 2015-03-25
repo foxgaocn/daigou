@@ -34,6 +34,8 @@ gpg --armor --export 561F9B9CAC40B2F7 | sudo apt-key add -
 # Add HTTPS support to APT
 sudo apt-get install apt-transport-https
 
+
+
 # Add the passenger repository
 sudo sh -c "echo 'deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main' &gt;&gt; /etc/apt/sources.list.d/passenger.list"
 sudo chown root: /etc/apt/sources.list.d/passenger.list
@@ -42,3 +44,15 @@ sudo apt-get update
 
 # Install nginx and passenger
 sudo apt-get install nginx-full passenger
+
+
+
+
+#deploy from local machine
+cap production deploy   
+
+
+#if get an "permission denied (publickey error)" run the following
+$ ssh-add -D   #remove existing identities
+$ ssh-agent    #copy the lines & run them
+$ ssh-add      #uses the output from above
