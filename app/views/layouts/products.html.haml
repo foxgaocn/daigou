@@ -5,7 +5,7 @@
         .list-group.menu
           .list-group-item.menu-title 商品类别
           %a.list-group-item{href: "/products"} 所有商品
-          - Category.all.each do |c|
+          - Category.concrete.each do |c|
             %a.list-group-item{href: "/products?category_id=#{c.id}"} #{c.name}
       .col-md-9
         = yield

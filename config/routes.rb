@@ -3,7 +3,8 @@ Daigou::Application.routes.draw do
   devise_for :users
   resources :products
 
-  root 'home#index'
+  #root 'home#index'
+  root 'products#index'
 
   get 'my', to: 'users#dash_board', as: :user_root 
   get '/my/orders', to: 'users#orders'

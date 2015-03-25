@@ -21,7 +21,7 @@
     = f.text_area :desc, id:"wysihtml5-textrea", size: "80x30"
   .field
     = f.label :category
-    = f.collection_select :category_id, Category.order(:id), :id, :name
+    = f.collection_select :category_id, Category.concrete, :id, :name
   .field
     = f.label :price
     = f.text_field :price, :value => @product.dollar_price
