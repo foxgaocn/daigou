@@ -11,7 +11,7 @@ class Packing
   private
 
   def pack_unit_item(item)
-    raise 'cannot pack item greater than 4500 gram' if (item.product.weight > 4500)
+    raise 'cannot pack item greater than 4500 gram' if (item.product.weight > MAX_PACK)
 
     return if try_add(item)
     package = @order.packages.create

@@ -6,6 +6,7 @@ class @PRODUCT
     $('.add').click @add_to_cart
     $('.plus').click @add
     $('.minus').click @minus
+    $(window).resize @toggle_collaps
 
   add_to_cart: (event) =>
     quantity = $("#count").val()
@@ -39,3 +40,6 @@ class @PRODUCT
     oldValue = parseInt(dataNode.val())
     newValue = if oldValue < 1 then 0 else oldValue - 1
     dataNode.val(newValue)
+
+  toggle_collaps: (event) =>
+    $('#collapseListGroup1').collapse('show')

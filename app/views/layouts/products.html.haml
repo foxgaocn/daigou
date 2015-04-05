@@ -2,12 +2,27 @@
   .container  
     .row
       .col-md-3 
-        .list-group.menu
-          .list-group-item.menu-title 商品类别
-          %a.list-group-item{href: "/products"} 所有商品
-          - Category.concrete.each do |c|
-            %a.list-group-item{href: "/products?category_id=#{c.id}"} #{c.name}
+        .panel-group{:role => "tablist"}
+          #accordion1.panel.panel-default
+            #collapseListGroupHeading1.panel-heading{:role => "tab"}
+              %h4#-collapsible-list-group-.panel-title
+                %a.collapsed{"aria-controls" => "collapseListGroup1", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseListGroup1"}
+                  #cat_title{style:'width:100%'}
+                    商品类别
+                %a.anchorjs-link{:href => "#-collapsible-list-group-"}
+                  %span.anchorjs-icon
+            #collapseListGroup1.panel-collapse.collapse{"aria-expanded" => "false", "aria-labelledby" => "collapseListGroupHeading1", :role => "tabpanel", :style => "height: 0px;"}
+              %ul.list-group.menu
+                %li.list-group-item
+                  %a{href: "/products"} 所有商品
+                - Category.concrete.each do |c|
+                  %li.list-group-item
+                    %a{href: "/products?category_id=#{c.id}"} #{c.name}
+          
+          
       .col-md-9
         = yield
 = render template: "layouts/application"
 
+:javascript
+    new COLLAPSE()
