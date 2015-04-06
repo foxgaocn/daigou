@@ -100,6 +100,8 @@ class @ORDER
         $('.badge').text(0)
     ).fail( (jqXHR, textStatus, errorThrown) =>
         alert('对不起，清空购物车出错了，请与我们联系')
+        alert(textStatus)
+        alert(errorThrown)
         window.location.href = "/"
       )
 
