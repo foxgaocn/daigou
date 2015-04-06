@@ -18,6 +18,8 @@
 .panel.panel-info
   .panel-heading 包装明细
   .panel-body
+    .alert.alert-danger{role:'alert'}
+      由于快递公司对包裹的不同要求以及客户的拼箱需求等不确定因素，此包装明细仅供参考。实际包装以发货时包装为准。
     - @order.packages.each_with_index do |package, index|
       .panel.panel-warning
         .panel-heading
