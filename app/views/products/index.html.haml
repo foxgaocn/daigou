@@ -12,6 +12,6 @@
         .thumbnail
           = image_tag p.pictures[0].image.url(:thumb)
           .caption
-            %h4 $#{p.dollar_price}
+            %h4 人民币: #{p.rmb_price}
             %p #{p.name}
   = will_paginate @products

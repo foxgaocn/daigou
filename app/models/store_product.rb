@@ -11,7 +11,7 @@ class StoreProduct < ActiveRecord::Base
   end
 
   def auto_price
-    self.product.price * rate * (100 + self.store.price_factor)/100
+    self.product.rmbprice * (100 + self.store.price_factor)/100
   end
 
   def auto_price_in_yuan

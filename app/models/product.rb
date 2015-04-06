@@ -24,6 +24,10 @@ class Product < ActiveRecord::Base
     price.nil? ? 0: price/100.00.round(2)
   end
 
+  def rmb_price
+    rmbprice.nil? ? 0: rmbprice/100.00.round(2)
+  end
+
   def add_to_store
     Store.includes(:products).each { |s| s.products << self }
   end

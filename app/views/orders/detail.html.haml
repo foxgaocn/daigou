@@ -7,11 +7,11 @@
     - @order.order_items.each do |item|
       %tr
         %td.col-md-8= link_to item.product.name, product_path(item.product_id) 
-        %td.col-md-2= "#{item.product.dollar_price} 澳元"
+        %td.col-md-2= "#{item.product.rmb_price} 元"
         %td.col-md-2= item.quantity
     %tr
       %td.text-right{colspan:2} 总价
-      %td= "#{@order.total_price} 澳元"
+      %td= "#{@order.total_price} 元"
         
 
 
@@ -24,7 +24,7 @@
           .row
             .span.col-md-6= "包裹 ##{index + 1}"
             .span.col-md-3.text-right= "重量: #{package.total_weight} kg"
-            .span.col-md-3.text-right= "运费: #{package.deliver_cost} 澳元"
+            /.span.col-md-3.text-right= "运费: #{package.deliver_cost} 澳元"
         .panel-body
           -package.package_items.each do |item|
             %p= "#{item.product.name} x #{item.quantity}"
@@ -32,10 +32,10 @@
             送货地址:  #{package.address.street}  #{package.address.name}
 
 
-  .panel-footer.text-right
-    %p= "总运费: #{@order.total_deliver_cost} 澳元"
+  / .panel-footer.text-right
+  /   %p= "总运费: #{@order.total_deliver_cost} 澳元"
 
 .row
   .col-md-12
     .alert.alert-success.text-right
-      ="订单总价格: #{@order.cost} 澳元" 
+      ="订单总价格: #{@order.cost} 元" 

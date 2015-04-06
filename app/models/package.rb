@@ -26,6 +26,7 @@ class Package < ActiveRecord::Base
   end
 
   def deliver_cost
-    (total_weight * 2).ceil/2.0 * 10
+    0
+    #(total_weight * 2).ceil/2.0 * 10
   end
 end

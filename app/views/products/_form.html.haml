@@ -26,6 +26,9 @@
     = f.label :price
     = f.text_field :price, :value => @product.dollar_price
   .field
+    = f.label :rmbprice
+    = f.text_field :rmbprice, :value => @product.rmb_price
+  .field
     = f.label :stock
     = f.number_field :stock
   .field

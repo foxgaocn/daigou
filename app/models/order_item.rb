@@ -3,6 +3,6 @@ class OrderItem < ActiveRecord::Base
   belongs_to :product
 
   def total_price 
-    (product.dollar_price * quantity).round(2)
+    (product.rmb_price * quantity).round(2)
   end
 end

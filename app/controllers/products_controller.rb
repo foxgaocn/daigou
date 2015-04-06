@@ -76,9 +76,10 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      hash = params.require(:product).permit(:sku, :name, :desc, :category_id, :price, :stock, :active, :weight,
+      hash = params.require(:product).permit(:sku, :name, :desc, :category_id, :price, :rmbprice, :stock, :active, :weight,
        :pictures_attributes=>[:_destroy, :id, :image])
       hash[:price] = (hash[:price].to_f * 100).to_i
+      hash[:rmbprice] = (hash[:rmbprice].to_f * 100).to_i
       hash
     end
 end
