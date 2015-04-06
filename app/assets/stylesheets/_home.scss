@@ -19,3 +19,9 @@
 #products{
   padding-top: 20px;
 }
+
+@media (max-width: 768px) {
+  .only-in-big{
+    display: none;
+  }
+}

@@ -16,11 +16,11 @@
           %td.col-md-1= "#{item.product.rmb_price} 元"
           %td.col-md-2
             .input-group
-              %span.input-group-btn
+              %span.input-group-btn.only-in-big
                 %button.btn.btn-default.minus{:type => "button"} -
               %input.form-control.text-center.data-container{type:"number", min:0, value:item.quantity, 
                 'data-product' => "{\"product_id\": #{item.product_id}, \"quantity\":#{item.quantity}, \"price\":#{item.product.rmb_price} } "  } 
-              %span.input-group-btn
+              %span.input-group-btn.only-in-big
                 %button.btn.btn-default.plus{:type => "button"} +
           %td.col-md-1
             %i.fa.fa-times
@@ -30,11 +30,12 @@
           %span{id:"total"}= @cart.total_price 
           %span 元
     .panel-footer
-      .row
-        .col-md-6.text-left
-          .btn.btn-info.back < 继续购物
-        .col-md-6.text-right
-          .btn.btn-success 去结算 >
+      %table.table
+        %tr
+          %td.pull-left
+            .btn.btn-info.back < 继续购物
+          %td.pull-right
+            .btn.btn-success 去结算 >
 
 :javascript
   new CART(#{@cart.id})
