@@ -83,7 +83,6 @@ class @ORDER
       contentType: 'application/json',
       success: (data) =>
         @empty_cart()
-        window.location.href = "/orders/" + @order_id + "/confirmed"
     ).fail( (jqXHR, textStatus, errorThrown) =>
         alert('对不起，提交订单出错了，请与我们联系')
         window.location.href = "/"
@@ -98,10 +97,9 @@ class @ORDER
       contentType: 'application/json',
       success: (data) ->
         $('.badge').text(0)
+        window.location.href = "/orders/" + @order_id + "/confirmed"
     ).fail( (jqXHR, textStatus, errorThrown) =>
         alert('对不起，清空购物车出错了，请与我们联系')
-        alert(textStatus)
-        alert(errorThrown)
         window.location.href = "/"
       )
 
