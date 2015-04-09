@@ -25,7 +25,7 @@
         .panel-heading
           .row
             .span.col-md-6= "包裹 ##{index + 1}"
-            .span.col-md-3.text-right= "重量: #{package.total_weight} kg"
+            /.span.col-md-3.text-right= "重量: #{package.total_weight} kg"
             / .span.col-md-3.text-right= "运费: #{package.deliver_cost} 澳元"
         .panel-body
           -package.package_items.each do |item|
