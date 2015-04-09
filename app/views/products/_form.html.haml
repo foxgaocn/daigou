@@ -35,8 +35,11 @@
     = f.label :active
     = f.check_box :active
   .field
-    = f.label :weight
+    = f.label :weight, "毛重量（克，含包装)"
     = f.number_field :weight
+  .field
+    = f.label :volumn, "含量"
+    = f.text_field :volumn
 
   .field
     = f.fields_for :pictures do |pf|

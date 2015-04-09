@@ -3,12 +3,14 @@
   %table.table.table-striped
     %tr
       %th.col-md-2 姓名
-      %th.col-md-6 地址
+      %th.col-md-4 地址
       %th.col-md-2 邮编
       %th.col-md-2 手机号码
+      %th.col-md-2 身份证
     -@addresses.each do |a|
       %tr
         %td.col-md-2=a.name
-        %td.col-md-6=a.street
+        %td.col-md-4=a.street
         %td.col-md-2=a.post_code
         %td.col-md-2=a.phone_number
+        %td.col-md-2=a.sid

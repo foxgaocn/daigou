@@ -12,13 +12,14 @@ class @ORDER
     street = $('#street').val().trim()
     postcode = $('#postcode').val().trim()
     phone = $('#phone').val().trim()
+    sid = $('#sid').val().trim()
 
-    if(name == "" || street == "" || postcode == "" || phone == "")
+    if(name == "" || street == "" || postcode == "" || phone == "" || sid == "")
       alert("请输入完整信息")
       return
     
     $.post("/addresses.json",
-          { "address" : { "name": name, "street": street, "post_code": postcode, "phone_number": phone} },
+          { "address" : { "name": name, "street": street, "post_code": postcode, "phone_number": phone, "sid": sid} },
           (data) => @update_address_list(data)
       ).fail( (jqXHR, textStatus, errorThrown) =>
         alert(jqXHR.responseText)
