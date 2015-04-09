@@ -1,0 +1,23 @@
+.container
+  .panel.panel-success
+    / Default panel contents
+    .panel-heading 店铺属性
+    .panel-body
+      = form_for @store, :html=>{:class => 'form-horizontal'} do |f|
+        - if @store.errors.any?
+          #error_explanation
+            %h2= "#{店铺参数设置错误}"
+            %ul
+              - @store.errors.full_messages.each do |msg|
+                %li= msg
+        .form-group
+          = f.label :name, "店铺名:", :html=>{:class => 'col-sm-2 control-label'} 
+          = f.text_field :name, :html=>{:class => 'col-sm-2 control-label'} 
+        .form-group
+          = f.label :show_price, "在我的店铺显示价格:"
+          = f.text_field :show_price
+        .form-group
+          = f.label :price_factor, "利润率:"
+          = f.text_field :price_factor
+        .actions
+          = f.submit 'Save'

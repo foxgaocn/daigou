@@ -18,6 +18,8 @@ Daigou::Application.routes.draw do
     post 'clear', on: :collection
   end
 
+  resources :stores, only: [:edit, :update]
+
   resources :orders, only: [:new, :show] do
     post :confirm, on: :member
     get :confirmed, on: :member

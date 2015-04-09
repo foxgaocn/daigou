@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def dash_board
+    @store = current_user.store
   end
 
   def orders

@@ -2,12 +2,13 @@
   .panel.panel-primary
     .panel-heading 
       我的网店
-      %span.pull-right 编辑
+      %span.pull-right 
+        =link_to "编辑", edit_store_path(@store)
     .panel-body
       %table.table
         %tr
           %td 网店网址:
-          %td= link_to "#{ENV['dj_mall_url']}/#{current_user.store.name}","#{ENV['dj_mall_url']}/#{current_user.store.name}", target: "_blank"
+          %td= link_to "#{ENV['dj_mall_url']}/#{current_user.auto_name}","#{ENV['dj_mall_url']}/#{current_user.store.name}", target: "_blank"
         %tr
           %td 显示价格:
           %td

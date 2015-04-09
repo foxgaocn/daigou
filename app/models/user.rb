@@ -13,22 +13,22 @@ class User < ActiveRecord::Base
 
 
   def create_the_store
-    name = generate_store_name
-    store_url = "#{ENV['dj_mall_url']}/#{name}"
+    store_url = "#{ENV['dj_mall_url']}/#{auto_name}"
     qr_code_img = RQRCode::QRCode.new(store_url, size: 6).to_img
 
-    store = self.create_store(name:name)
+    store = self.create_store(name:auto_name)
     store.update_attribute :qr_code, qr_code_img.to_string
 
     Product.all.each { |p| store.products << p } 
   end
 
-  def generate_store_name
+  def auto_name
+    return @name if @name
     existing_names = Store.pluck(:name)
-    name = email[0..email.index('@')-1]
-    while(existing_names.include?(name)) do
-      name += '1'
+    @name = email[0..email.index('@')-1]
+    while(existing_names.include?(@name)) do
+      @name += '1'
     end 
-    name
+    @name
   end
 end
