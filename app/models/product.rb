@@ -33,6 +33,6 @@ class Product < ActiveRecord::Base
   end
 
   def remove_from_store
-    Store.includes(:products).each { |s| s.products.reject! {|p| p.id == id}}
+    Store.includes(:products).each { |s| s.products.delete(p) }
   end
 end
