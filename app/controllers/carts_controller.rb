@@ -20,8 +20,6 @@ class CartsController < ApplicationController
   end
 
   def clear
-    Rails.logger.error "~~~~~~~~~~~~~~~~~~~~~~~~~~~clear cart for user ~~~~~~~~~~~~~~~~~~~"
-    Rails.logger.error "~~~~~~~~~~~~#{current_user.id}~~~~~~~~~~~~~~~~~~~~~"
     cart = Cart.find_by_user_id(current_user.try(:id))
     cart.try(:destroy)
     session[:cart_id] = nil
