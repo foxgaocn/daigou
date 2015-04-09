@@ -6,7 +6,9 @@ Daigou::Application.routes.draw do
   #root 'home#index'
   root 'products#index'
 
-  get 'my', to: 'users#dash_board', as: :user_root 
+  #get 'my', to: 'users#dash_board', as: :user_root 
+  get 'my', to: 'users#orders', as: :user_root 
+  
   get '/my/orders', to: 'users#orders'
   get '/my/addresses', to: 'users#addresses'
   get '/my/products', to: 'users#products'
